@@ -23,4 +23,24 @@ public interface PrimeSieve {
         if (!numbers[p]) return true;
         else return false;
     }
+
+    public static void printPrimes() {
+        int counter = 1;
+        primes[0] = 2;
+        for (int i = 2; i < Max; i += 2) {
+            numbers[i] = true;
+        }
+        for (int prime = 3; prime < Max; prime += 2) {
+            if (!numbers[prime]) {
+                primes[counter] = prime;
+                counter++;
+                for (int i = 2; prime * i < Max; i++) {
+                    numbers[prime * i] = true;
+                }
+            }
+        }
+        for (int i = 0; i < primes.length; i++) {
+            System.out.println(primes[i]);
+        }
+    }
 }
